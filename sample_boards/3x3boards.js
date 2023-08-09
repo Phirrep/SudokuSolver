@@ -21,3 +21,4 @@ const solution1 = [
     [3, 7, 2, 6, 9, 1, 4, 5, 8], [4, 6, 1, 5, 8, 3, 7, 9, 2], [5, 8, 9, 2, 7, 4, 6, 1, 3],
     [8, 3, 6, 2, 1, 9, 7, 4, 5], [9, 2, 4, 8, 5, 7, 3, 1, 6], [1, 5, 7, 4, 3, 6, 8, 9, 2]
 ];
+console.log(verifySolution(board1, solution1)? "board one is valid":"board one is invalid");

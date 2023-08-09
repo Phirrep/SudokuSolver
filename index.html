@@ -8,7 +8,7 @@
         <form>
             <label for="agent">Agent</label>
             <select id="agent">
-
+                <option value="backtracking">Backtracking</option>
             </select>
         </form>
         <form>
@@ -17,8 +17,12 @@
                 <option value="1">Board 1</option>
             </select>
         </form>
-        <button></button>
+        <button onclick=initialize()>Select</button>
     </div>
-    <script src="index.js"></script>
     <script src="utils/utils.js"></script>
+    <script src="utils/boardTest.js"></script>
+    <script src="sample_boards/3x3boards.js"></script>
+    <script src="agents/CSPAgent.js"></script>
+    <script src="agents/backtrackingAgent.js"></script>
+    <script src="index.js"></script>
 </body>
