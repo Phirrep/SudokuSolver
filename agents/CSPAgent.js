@@ -13,15 +13,16 @@ class Agent{
                 }
             }
         }
-        let lnSq = Math.sqrt(board.length);
+        this.lnSq = Math.sqrt(board.length);
+
         //Defines array of functions to check constraints given variable key
         this.constraints = [
             x => {
-                let row = lnSq*Math.floor(parseInt(x[0])/lnSq) + Math.floor(parseInt(x[2])/lnSq);
+                let row = this.getKeyRow(x);
                 return !checkRepeat(getRow(this.board, row));
             },
             y => {
-                let column = lnSq*Math.floor(parseInt(y[0])%lnSq) + Math.floor(parseInt(y[2])%lnSq);
+                let column = this.getKeyColumn(y);
                 return !checkRepeat(getColumn(this.board, column));
             }, 
             z => {
@@ -41,9 +42,23 @@ class Agent{
         this.board[divIndex][cellIndex] = value;
         this.variables[key] = value;
         this.markVariable(key);
-        updateHTMLBoard();
+        //updateHTMLBoard();
     }
     checkConstraints(key){
         return this.constraints.every(x => x(key));
+    }
+    getKeyRow(key){
+        let lnSq = this.lnSq;
+        return lnSq*Math.floor(parseInt(key[0])/lnSq) + Math.floor(parseInt(key[2])/lnSq);
+    }
+    getKeyColumn(key){
+        let lnSq = this.lnSq;
+        return lnSq*Math.floor(parseInt(key[0])%lnSq) + Math.floor(parseInt(key[2])%lnSq);
+    }
+    node(value){
+        return {num: value, next: this.nempty(), isEmpty: false}
+    }
+    nempty(){
+        return {isEmpty: true};
     }
 }

@@ -47,11 +47,21 @@ function boardInitialize(length){
         }
     }
 }
+function boardClone(board){
+    let newBoard = [];
+    for (let i = 0; i < board.length; i++){
+        newBoard.push([]);
+        for (let j = 0; j < board.length; j++){
+            newBoard[i].push(board[i][j]);
+        }
+    }
+    return newBoard;
+}
 
 function wait(ms){
     var start = new Date().getTime();
     var end = start;
-    while(end < start + ms) {
-      end = new Date().getTime();
-   }
- }
+    while(end < start + ms){
+        end = new Date().getTime();
+    }
+}

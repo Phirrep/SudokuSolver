@@ -2,9 +2,8 @@
     <b>Sudoku Solver Project</b>
 </head>
 <body>
-    <div id="board"></div>
     <!-- Form to select agent, board, and solve sudoku board-->
-    <div style="position: absolute; left: 400px">
+    <div>
         <form>
             <label for="agent">Agent</label>
             <select id="agent">
@@ -12,13 +11,22 @@
             </select>
         </form>
         <form>
+            <label for="restricted">Restricted Domain?</label>
+            <select id="restricted">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </form>
+        <form>
             <label for="sampleBoard">Board</label>
             <select id="sampleBoard">
                 <option value="1">Board 1</option>
+                <option value="2">Board 2</option>
             </select>
         </form>
         <button onclick=initialize()>Select</button>
     </div>
+    <div id="board" style="position: absolute; top:170px"></div>
     <script src="utils/utils.js"></script>
     <script src="utils/boardTest.js"></script>
     <script src="sample_boards/3x3boards.js"></script>
