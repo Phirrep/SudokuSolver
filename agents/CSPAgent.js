@@ -1,19 +1,42 @@
 class Agent{
-    constructor(board){
+    constructor(board, first=true, restricted=false){
         //All variables are empty squares
         //Domain is numbers 1-9 (depending on board length)
         //Constraints r basic sudoku rules (no repeat numbers in square, row, column)
         this.board = board;
-        this.arcs = [];
+        //this.arcs = [];
         this.variables = {};
+        this.first = first;
+        this.restricted = restricted;
+        this.lnSq = Math.sqrt(board.length);
+        //Initialize variables to empty board spaces
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++){
                 if (board[i][j]==0){
-                    this.variables[i+" "+j] = 0;
+                    let key = i+" "+j;
+                    console.log(key);
+                    console.log(this.getKeyRow(key));
+                    let row = getRow(this.board, this.getKeyRow(key));
+                    let column = getColumn(this.board, this.getKeyColumn(key));
+                    this.variables[key] = {value: 0};
+                    //Domain structured in linked list, empty node has null num and next
+                    this.variables[key].domain = this.node(0);
+                    let currNode = this.variables[key].domain;
+                    for (let num = 1; num <= this.board.length; num++){
+                        if (!this.restricted){
+                            currNode.next = this.node(num);
+                            currNode = currNode.next;
+                        }
+                        else if (!row.some(x=>x==num) && !column.some(x=>x==num) && !this.board[parseInt(key[0])].some(x=>x==num)){
+                            currNode.next = this.node(num);
+                            currNode = currNode.next;
+                        }
+                    }
+                    this.variables[key].domain = this.variables[key].domain.next;
                 }
             }
         }
-        this.lnSq = Math.sqrt(board.length);
+
 
         //Defines array of functions to check constraints given variable key
         this.constraints = [
@@ -40,7 +63,7 @@ class Agent{
         let divIndex = parseInt(key[0]);
         let cellIndex = parseInt(key[2]);
         this.board[divIndex][cellIndex] = value;
-        this.variables[key] = value;
+        this.variables[key].value = value;
         this.markVariable(key);
         //updateHTMLBoard();
     }

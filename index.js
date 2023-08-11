@@ -16,10 +16,10 @@ function initialize(){
     switch(agentSelect){
         case "backtracking":
             if (restricted=="yes"){
-                agent = new BacktrackingAgentRestricted(board);
+                agent = new BacktrackingAgent(board, first=true, restricted=true);
             }
             else if (restricted=="no"){
-                agent = new BacktrackingAgent(board);
+                agent = new BacktrackingAgent(board, first=true, restricted=false);
             }
     }
     update();
