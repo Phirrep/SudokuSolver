@@ -8,6 +8,7 @@
             <label for="agent">Agent</label>
             <select id="agent">
                 <option value="backtracking">Backtracking</option>
+                <option value="forwardchecking">Forwardchecking</option>
             </select>
         </form>
         <form>
@@ -20,8 +21,10 @@
         <form>
             <label for="sampleBoard">Board</label>
             <select id="sampleBoard">
-                <option value="1">Board 1</option>
-                <option value="2">Board 2</option>
+                <option value="1_3x3">3x3 Board 1</option>
+                <option value="2_3x3">3x3 Board 2</option>
+                <option value="3_3x3">3x3 Board 3</option>
+                <option value="1_2x2">2x2 Board 1</option>
             </select>
         </form>
         <button onclick=initialize()>Select</button>
@@ -29,8 +32,10 @@
     <div id="board" style="position: absolute; top:170px"></div>
     <script src="utils/utils.js"></script>
     <script src="utils/boardTest.js"></script>
+    <script src="sample_boards/2x2boards.js"></script>
     <script src="sample_boards/3x3boards.js"></script>
     <script src="agents/CSPAgent.js"></script>
     <script src="agents/backtrackingAgent.js"></script>
+    <script src="agents/forwardcheckingAgent.js"></script>
     <script src="index.js"></script>
 </body>

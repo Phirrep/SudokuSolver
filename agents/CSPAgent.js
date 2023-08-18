@@ -4,7 +4,6 @@ class Agent{
         //Domain is numbers 1-9 (depending on board length)
         //Constraints r basic sudoku rules (no repeat numbers in square, row, column)
         this.board = board;
-        //this.arcs = [];
         this.variables = {};
         this.first = first;
         this.restricted = restricted;
@@ -13,9 +12,8 @@ class Agent{
         for (let i = 0; i < board.length; i++){
             for (let j = 0; j < board[i].length; j++){
                 if (board[i][j]==0){
+                    //Key is div then board index
                     let key = i+" "+j;
-                    console.log(key);
-                    console.log(this.getKeyRow(key));
                     let row = getRow(this.board, this.getKeyRow(key));
                     let column = getColumn(this.board, this.getKeyColumn(key));
                     this.variables[key] = {value: 0};
@@ -36,7 +34,6 @@ class Agent{
                 }
             }
         }
-
 
         //Defines array of functions to check constraints given variable key
         this.constraints = [
@@ -79,7 +76,7 @@ class Agent{
         return lnSq*Math.floor(parseInt(key[0])%lnSq) + Math.floor(parseInt(key[2])%lnSq);
     }
     node(value){
-        return {num: value, next: this.nempty(), isEmpty: false}
+        return {num: value, next: this.nempty(), isEmpty: false, markedKeys: []}
     }
     nempty(){
         return {isEmpty: true};

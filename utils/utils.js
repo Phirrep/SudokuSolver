@@ -2,7 +2,8 @@ let board;
 let solution;
 let agent;
 function getIndexId(divIndex, elementIndex){
-    return Math.floor(divIndex/3)+" "+(divIndex%3)+" "+Math.floor(elementIndex/3)+" "+(elementIndex%3);
+    let lnSq = Math.sqrt(board.length);
+    return Math.floor(divIndex/lnSq)+" "+(divIndex%lnSq)+" "+Math.floor(elementIndex/lnSq)+" "+(elementIndex%lnSq);
 }
 function updateHTMLBoard(){
     //loop through every element in every div
