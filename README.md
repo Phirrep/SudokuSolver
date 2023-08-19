@@ -1,1 +1,7 @@
-This project is a sudoku solver that uses CSP constraint satisfactory problem solving to solve a sudoku board
+This project is a sudoku solver that treats the sudoku board as a CSP and uses different algorithms to check different number values in the puzzle.
+
+The first algorithm is backtracking, which essentially summarizes to a brute force algorithm, testing all the different numbers that can be plugged into the empty squares until a valid solution is found.
+
+The second algorithm is forward checking, which is a variation of the backtracking algorithm. As different numbers are tested on specific variables, all the variables that are in the same row, column, or square as the current variable will have their domains affected to reduce the number of calculations and tests needed for a solution. While this can be more efficient than backtracking, there can still be a lot of back tracing depending on the board structure.
+
+The third algorithm is arc consistency, which is a variation of the forward checking algorithm. As different numbers are inputted into the variables, the algorithm checks to make sure the variables dependent on the current variable don't have a completely empty domain, where no number value will satisfy the currently filled out solution. This can be more efficient than forward tracing, and can have reduced back tracing since the algorithm back traces early when discovering that certain variables can't satisfy the current solution.
