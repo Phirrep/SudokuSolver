@@ -32,6 +32,9 @@ function initialize(){
         case "forwardchecking":
             agent = new ForwardcheckingAgent(board, first=true, restricted=true);
             break;
+        case "arcconsistency":
+            agent = new ArcconsistencyAgent(board, first=true, restricted=true);
+            break;
     }
     update();
     agent.findSolution();
