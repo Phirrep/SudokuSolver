@@ -27,6 +27,7 @@ class BacktrackingAgent extends Agent{
                         keySignal[i].continue();
                         return false;
                     }
+                    this.changeCount += 1;
                     this.updateVariable(key, numNode.num);
                     numNode = numNode.next;
                     if (this.checkConstraints(key)){

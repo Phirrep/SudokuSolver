@@ -57,14 +57,12 @@ class ForwardcheckingAgent extends Agent{
                         return;
                     }
                     this.updateVariable(key, numNode.num);
+                    this.changeCount += 1;
                     this.variables[key].dependents.forEach(x => this.markNode(x, key, numNode.num));
                     numNode = numNode.next;
                     //wait(1000);
-                    if (this.checkConstraints(key)){
-                        recursiveForwardchecking(i+1);
-                        return;
-                    }
-                    window.requestAnimationFrame(progress);
+                    recursiveForwardchecking(i+1);
+                    return;
                 };
                 return progress;
             };

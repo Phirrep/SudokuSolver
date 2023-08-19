@@ -4,6 +4,7 @@ class Agent{
         //Domain is numbers 1-9 (depending on board length)
         //Constraints r basic sudoku rules (no repeat numbers in square, row, column)
         this.board = board;
+        this.changeCount = 0;
         this.variables = {};
         this.first = first;
         this.restricted = restricted;
@@ -62,6 +63,8 @@ class Agent{
         this.board[divIndex][cellIndex] = value;
         this.variables[key].value = value;
         this.markVariable(key);
+        let currCount = document.getElementById("count");
+        currCount.innerHTML = this.changeCount;
         //updateHTMLBoard();
     }
     checkConstraints(key){
