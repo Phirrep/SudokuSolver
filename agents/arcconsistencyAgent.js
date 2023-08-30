@@ -35,7 +35,7 @@ class ArcconsistencyAgent extends ForwardcheckingAgent{
                     if (numNode.isEmpty){
                         this.updateVariable(key, 0);
                         this.variables[key].dependents.forEach(x => this.markNode(x, key, 0));
-                        keySignal[i].continue();
+                        window.requestAnimationFrame(keySignal[i].continue);
                         return false;
                     }
                     if (numNode.markedKeys.length != 0){
@@ -54,10 +54,10 @@ class ArcconsistencyAgent extends ForwardcheckingAgent{
                     recursiveArcconsistency(i+1);
                     return;
                 }
-                return progress;    
+                return progress;
             }
             keySignal[i+1].continue = scope();
-            keySignal[i+1].continue();
+            window.requestAnimationFrame(keySignal[i+1].continue);
         }
         recursiveArcconsistency(0);
         return this.board;

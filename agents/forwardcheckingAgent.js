@@ -48,7 +48,7 @@ class ForwardcheckingAgent extends Agent{
                     if (numNode.isEmpty){
                         this.updateVariable(key, 0);
                         this.variables[key].dependents.forEach(x => this.markNode(x, key, 0));
-                        keySignal[i].continue();
+                        window.requestAnimationFrame(keySignal[i].continue);
                         return false;
                     }
                     if (numNode.markedKeys.length != 0){
@@ -67,7 +67,7 @@ class ForwardcheckingAgent extends Agent{
                 return progress;
             };
             keySignal[i+1].continue = scope();
-            keySignal[i+1].continue();
+            window.requestAnimationFrame(keySignal[i+1].continue);
         }
         recursiveForwardchecking(0);
         return this.board;

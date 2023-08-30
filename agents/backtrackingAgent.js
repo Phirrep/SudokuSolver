@@ -24,7 +24,7 @@ class BacktrackingAgent extends Agent{
                 let progress = () => {
                     if (numNode.isEmpty){
                         this.updateVariable(key, 0);
-                        keySignal[i].continue();
+                        window.requestAnimationFrame(keySignal[i].continue);
                         return false;
                     }
                     this.changeCount += 1;
@@ -40,7 +40,7 @@ class BacktrackingAgent extends Agent{
                 return progress;
             };
             keySignal[i+1].continue = scope();
-            keySignal[i+1].continue();
+            window.requestAnimationFrame(keySignal[i+1].continue);
         }
         recursiveBacktracking(0);
         return this.board;
